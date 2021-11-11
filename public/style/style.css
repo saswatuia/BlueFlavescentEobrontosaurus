@@ -1,0 +1,23 @@
+body{
+    margin: 0;
+}
+
+.header{
+    display: grid;
+    justify-content: center;
+    background-color: antiquewhite;
+}
+
+.section{
+    display: grid;
+    justify-content: center;
+}
+
+.footer{
+    display: grid;
+    justify-content: center;
+    background-color: antiquewhite;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
