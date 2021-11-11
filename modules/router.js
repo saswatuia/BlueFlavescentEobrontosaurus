@@ -2,14 +2,17 @@ const express = require("express");
 const router = express.Router();
 const db = require('./db');
 
-router.get("/api/category", async (req, res, next) => {
+router.get("/api/category", protect, async (req, res, next) => {
+
     try{
         const data = await db.getCategory();
         res.status(200).json(data.rows).end();
     }
     catch(err){
-        console.error(err);
+        next(err);
     }
+
+    
 }) 
 
 router.post("/api/createCategory", async (req, res, next) => {
@@ -24,13 +27,12 @@ router.post("/api/createCategory", async (req, res, next) => {
         }
     }
     catch(err){
-        console.error(err);
+        next(err);
     }
 })
 
 router.delete("/api/dropCategory/:id", async (req, res, next) => {
     const categoryId = req.params.id;
-
     try{
         const data = await db.delteCategory(categoryId);
         if(data.rows.length > 0){
@@ -41,7 +43,7 @@ router.delete("/api/dropCategory/:id", async (req, res, next) => {
         }
     }
     catch(err){
-        console.error(err);
+        next(err);
     }
 })
 
