@@ -1,4 +1,6 @@
 const express = require("express");
+const router = require('./modules/router');
+const users = require('./modules/users');
 const server = express();
 const PORT = process.env.PORT || 8080;
 server.set("PORT", PORT);
@@ -6,6 +8,8 @@ server.set("PORT", PORT);
 // middleware ---------------------------
 server.use(express.static("public"));
 server.use(express.json());
+server.use(router);
+server.use(users);
 
 //Error handler
 server.use(function (err, req, res, next){
