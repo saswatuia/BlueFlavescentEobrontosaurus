@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require('./db');
 
-router.get("/api/category", protect, async (req, res, next) => {
+router.get("/api/category", async (req, res, next) => {
 
     try{
         const data = await db.getCategory();
@@ -16,9 +16,10 @@ router.get("/api/category", protect, async (req, res, next) => {
 }) 
 
 router.post("/api/createCategory", async (req, res, next) => {
-    const categoryName  = req.body;
+    const category  = req.body;
+    console.log(category)
     try{
-        const data = await db.createCategory(categoryName.name);
+        const data = await db.createCategory(category.name);
         if(data.rows.length > 0){
             res.status(200).json({msg: `${data.rows[0].name} posted to table category`}).end();
         }
