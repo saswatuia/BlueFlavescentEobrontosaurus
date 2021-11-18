@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require('./db');
+const auth_utils = require('./auth_utils');
 
 router.get("/api/category", protect, async (req, res, next) => {
 
