@@ -1,5 +1,6 @@
 const express = require("express");
 const router = require('./modules/router');
+const userRouter = require('./modules/user_router');
 const users = require('./modules/users');
 const server = express();
 const PORT = process.env.PORT || 8080;
@@ -9,6 +10,7 @@ server.set("PORT", PORT);
 server.use(express.static("public"));
 server.use(express.json());
 server.use(router);
+server.use(userRouter);
 server.use(users);
 
 //Error handler
