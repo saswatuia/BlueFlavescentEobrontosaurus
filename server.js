@@ -25,3 +25,7 @@ server.use(function (err, req, res, next){
 server.listen(server.get("PORT"), function () {
 	console.log("server running", server.get("PORT"));
 });
+
+function test (){
+	
+}

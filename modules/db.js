@@ -33,14 +33,14 @@ dbMethods.getAllUsers  = function(){
     return pool.query(sql);
 }
 
-dbMethods.getUser = function(){
+dbMethods.getUser = function(username){
     const sql = "SELECT * FROM users WHERE username = $1";
     const values = [username];
     return pool.query(sql, values);
 }
 
 dbMethods.createUser = function(username, password, salt){
-    const sql = "INSERT INTO (id, username, password, salt) VALUES(DEFAULT, $1, $2, $3) RETURNING *";
+    const sql = "INSERT INTO users (id, username, password, salt) VALUES(DEFAULT, $1, $2, $3) RETURNING *";
     const values = [username, password, salt];
     return pool.query(sql, values);
 }
